@@ -58,4 +58,12 @@ dependencies {
     //bottom navigation view
     implementation ("com.google.android.material:material:1.4.0.")
 
+    // Google Map
+    implementation ("com.google.android.gms:play-services-maps:17.0.0")
+    implementation("com.google.android.gms:play-services-location:17.0.0")
+
+    implementation ("androidx.compose.material:material:1.4.0-alpha02")
+    // Android-Google-Places-API 라이브러리 추가
+    implementation ("noman.placesapi:placesAPI:1.1.3")
+
 }
