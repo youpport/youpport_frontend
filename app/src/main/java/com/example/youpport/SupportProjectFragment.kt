@@ -5,55 +5,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SupportProjectFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SupportProjectFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_support_project, container, false)
+        val view = inflater.inflate(R.layout.fragment_support_project, container, false)
+
+        val btnProjectAll = view.findViewById<AppCompatButton>(R.id.btn_project_all)
+        val btnProjectHousingIncome = view.findViewById<AppCompatButton>(R.id.btn_project_housing_income)
+        val btnProjectEducationEmployment = view.findViewById<AppCompatButton>(R.id.btn_project_education_employment)
+        val btnProjectEtc = view.findViewById<AppCompatButton>(R.id.btn_project_etc)
+
+        val allButtons = listOf(btnProjectAll, btnProjectHousingIncome, btnProjectEducationEmployment, btnProjectEtc)
+
+        // 초기에 모든 버튼의 isSelected를 false로 설정
+        allButtons.forEach { it.isSelected = false }
+
+        btnProjectAll.setOnClickListener {
+            updateButtonState(btnProjectAll, allButtons)
+        }
+
+        btnProjectHousingIncome.setOnClickListener {
+            updateButtonState(btnProjectHousingIncome, allButtons)
+        }
+
+        btnProjectEducationEmployment.setOnClickListener {
+            updateButtonState(btnProjectEducationEmployment, allButtons)
+        }
+
+        btnProjectEtc.setOnClickListener {
+            updateButtonState(btnProjectEtc, allButtons)
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SupportProjectFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SupportProjectFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun updateButtonState(selectedButton: AppCompatButton, allButtons: List<AppCompatButton>) {
+        // 선택된 버튼 이외의 모든 버튼의 isSelected를 false로 설정
+        allButtons.filterNot { it == selectedButton }.forEach {
+            it.isSelected = false
+        }
+
+        // 선택된 버튼의 isSelected를 토글
+        selectedButton.isSelected = !selectedButton.isSelected
+
+        // 모든 버튼의 배경을 업데이트
+        allButtons.forEach {
+            it.setBackgroundResource(if (it.isSelected) R.drawable.category_button_checked else R.drawable.category_button_unchecked)
+        }
     }
 }
