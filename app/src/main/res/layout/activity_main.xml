@@ -17,7 +17,12 @@
         android:layout_height="77dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/white"
+        app:itemIconSize="40dp"
+        app:itemIconTint="@drawable/menu_selector_color"
         app:menu="@menu/btm_navi_menu"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        app:labelVisibilityMode="labeled"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
