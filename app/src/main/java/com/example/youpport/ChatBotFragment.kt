@@ -37,6 +37,7 @@ class ChatBotFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_chat_bot, container, false)
     }
 
+
     companion object {
         /**
          * Use this factory method to create a new instance of
