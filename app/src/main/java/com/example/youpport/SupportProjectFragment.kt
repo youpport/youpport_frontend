@@ -15,6 +15,8 @@ class SupportProjectFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_support_project, container, false)
 
+        val selectedButtonId = arguments?.getInt("selectedButtonId", -1)
+
         val btnProjectAll = view.findViewById<AppCompatButton>(R.id.btn_project_all)
         val btnProjectHousingIncome = view.findViewById<AppCompatButton>(R.id.btn_project_housing_income)
         val btnProjectEducationEmployment = view.findViewById<AppCompatButton>(R.id.btn_project_education_employment)
@@ -25,21 +27,25 @@ class SupportProjectFragment : Fragment() {
         // 초기에 모든 버튼의 isSelected를 false로 설정
         allButtons.forEach { it.isSelected = false }
 
-        btnProjectAll.setOnClickListener {
-            updateButtonState(btnProjectAll, allButtons)
+        // 선택된 버튼이 있으면 해당 버튼을 선택 상태로 설정
+        val selectedButton = when (selectedButtonId) {
+            R.id.btn_project_all -> btnProjectAll
+            R.id.btn_project_housing_income -> btnProjectHousingIncome
+            R.id.btn_project_education_employment -> btnProjectEducationEmployment
+            R.id.btn_project_etc -> btnProjectEtc
+            else -> null
         }
 
-        btnProjectHousingIncome.setOnClickListener {
-            updateButtonState(btnProjectHousingIncome, allButtons)
+        selectedButton?.let {
+            it.isSelected = true
+            it.setBackgroundResource(R.drawable.category_button_checked)
         }
 
-        btnProjectEducationEmployment.setOnClickListener {
-            updateButtonState(btnProjectEducationEmployment, allButtons)
-        }
-
-        btnProjectEtc.setOnClickListener {
-            updateButtonState(btnProjectEtc, allButtons)
-        }
+        // 버튼 클릭 리스너 설정
+        btnProjectAll.setOnClickListener { updateButtonState(btnProjectAll, allButtons) }
+        btnProjectHousingIncome.setOnClickListener { updateButtonState(btnProjectHousingIncome, allButtons) }
+        btnProjectEducationEmployment.setOnClickListener { updateButtonState(btnProjectEducationEmployment, allButtons) }
+        btnProjectEtc.setOnClickListener { updateButtonState(btnProjectEtc, allButtons) }
 
         return view
     }
