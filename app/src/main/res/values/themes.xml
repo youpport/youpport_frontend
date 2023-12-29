@@ -2,7 +2,6 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Youpport" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">@android:color/transparent</item>
     </style>
 
     <style name="Theme.Youpport" parent="Base.Theme.Youpport" />
