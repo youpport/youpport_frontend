@@ -16,12 +16,16 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        // findViewById 대신 view.findViewById 사용
         val btnAll = view.findViewById<AppCompatButton>(R.id.btn_all)
         val btnHouInc = view.findViewById<AppCompatButton>(R.id.btn_hou_inc)
         val btnEduEmp = view.findViewById<AppCompatButton>(R.id.btn_edu_emp)
         val btnEtc = view.findViewById<AppCompatButton>(R.id.btn_etc)
+        val btn_location = view.findViewById<AppCompatButton>(R.id.btn_location)
+
 
         // 클릭 이벤트 공통 처리 함수
         fun navigateToSupportFragment(selectedButtonId: Int) {
@@ -40,6 +44,14 @@ class HomeFragment : Fragment() {
         btnEduEmp?.setOnClickListener { navigateToSupportFragment(R.id.btn_project_education_employment) }
         btnEtc?.setOnClickListener { navigateToSupportFragment(R.id.btn_project_etc) }
 
+        btn_location.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.HomeFragment, LocationFragment())
+                .commit()
+        }
+
         return view
     }
 }
+
+
