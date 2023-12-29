@@ -27,4 +27,60 @@
         app:layout_constraintBottom_toBottomOf="@id/data_container"/>
 
 
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="이름"
+        app:layout_constraintStart_toEndOf="@id/iv_member"
+        app:layout_constraintTop_toTopOf="@id/data_container" />
+    <TextView
+        android:id="@+id/tv_region"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="지역"
+        app:layout_constraintStart_toEndOf="@id/iv_member"
+        app:layout_constraintTop_toTopOf="@id/data_container" />
+    <TextView
+        android:id="@+id/tv_organization"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="45dp"
+        android:text="기관"
+        app:layout_constraintStart_toEndOf="@id/iv_member"
+        app:layout_constraintTop_toTopOf="@id/data_container" />
+    <TextView
+        android:id="@+id/tv_start_period"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="65dp"
+        android:text="2023-11-01"
+        app:layout_constraintStart_toEndOf="@id/iv_member"
+        app:layout_constraintTop_toTopOf="@id/data_container" />
+    <TextView
+        android:id="@+id/special_symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="65dp"
+        android:text="~"
+        app:layout_constraintStart_toEndOf="@id/tv_start_period"
+        app:layout_constraintTop_toTopOf="@id/data_container" />
+    <TextView
+        android:id="@+id/tv_end_period"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="65dp"
+        android:text="2023-12-31"
+        app:layout_constraintStart_toEndOf="@id/special_symbol"
+        app:layout_constraintTop_toTopOf="@id/data_container" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
