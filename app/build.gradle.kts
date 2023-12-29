@@ -1,9 +1,12 @@
 import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
 
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    kotlin("plugin.serialization") version "1.6.10"
+
 }
 
 android {
@@ -18,6 +21,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"http://34.22.95.241:8080/\"")
     }
 
     buildTypes {
@@ -61,6 +66,12 @@ dependencies {
 
     // google map
     implementation ("com.google.android.gms:play-services-maps:18.1.0")
+
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
 
 
